@@ -8,7 +8,7 @@ node {
     sh "${GRADLE_HOME}/bin/gradle tasks"
 
     stage('Clone') {
-         git 'https://github.com/HugoAquinoNavarrete/devops-webapp3.git'
+         git url 'https://github.com/HugoAquinoNavarrete/devops-webapp3.git'
     }
 
     stage('build') {
@@ -18,7 +18,7 @@ node {
 }
 //END-OF-SCRIPT
 
-pipeline {
+//pipeline {
 //  environment {
 //     def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
 //  }
