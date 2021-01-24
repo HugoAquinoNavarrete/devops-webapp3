@@ -11,11 +11,11 @@ node {
          git url 'https://github.com/HugoAquinoNavarrete/devops-webapp3.git'
     }
 
-  stage('SonarQube analysis') {
-    withSonarQubeEnv() { // Will pick the global server connection you have configured
-      sh './gradlew sonarqube'
-    }
-  }
+//  stage('SonarQube analysis') {
+  //  withSonarQubeEnv() { // Will pick the global server connection you have configured
+    //  sh './gradlew sonarqube'
+//    }
+  //}
 
  //   stage('build') {
 // //       sh "${GRADLE_HOME}/bin/gradle build -PwarName=${RELEASENAME} --info"
