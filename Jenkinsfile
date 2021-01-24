@@ -19,9 +19,9 @@
 //END-OF-SCRIPT
 
 pipeline {
-  environment {
+//  environment {
 //     def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-  }
+//  }
 
   agent any
 
