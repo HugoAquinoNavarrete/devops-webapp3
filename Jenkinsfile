@@ -1,37 +1,26 @@
 //START-OF-SCRIPT
-pipeline{
-agent any
-
-  stages {
-    stage('Clone') {
-      steps {
-        git(url: 'https://github.com/HugoAquinoNavarrete/devops-webapp3', branch: 'main')
-      }
-    }
-  }
-}
-//node {
-//    def SONARQUBE_HOSTNAME = '54.202.173.92'
+node {
+    def SONARQUBE_HOSTNAME = '54.202.173.92'
 
 //    def GRADLE_HOME = tool name: 'gradle-4.10.2', type: 'hudson.plugins.gradle.GradleInstallation'
-    //def GRADLE_HOME = "/opt/gradle/gradle-4.10.2"
-  //  sh "${GRADLE_HOME}/bin/gradle tasks"
+    def GRADLE_HOME = "/opt/gradle/gradle-4.10.2"
+    sh "${GRADLE_HOME}/bin/gradle tasks"
 
-//    stage('Clone') {
-  //        sh "pwd"
-   //     git url: 'https://github.com/HugoAquinoNavarrete/devops-webapp3.git')
-   // }
+    stage('Clone') {
+          sh "pwd"
+        git url: 'https://github.com/HugoAquinoNavarrete/devops-webapp3.git')
+    }
 
-//    stage('build') {
-//        sh "${GRADLE_HOME}/bin/gradle build"
-//    }
+    stage('build') {
+        sh "${GRADLE_HOME}/bin/gradle build"
+    }
 
- //   stage('sonar-scanner') {
- //     def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
- //     withCredentials([string(credentialsId: 'sonar', variable: 'sonarLogin')]) {
- //       sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://${SONARQUBE_HOSTNAME}:9000 -Dsonar.login=${sonarLogin} -Dsonar.projectName=WebApp -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=GS -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.java.binaries=build/**/* -Dsonar.language=java"
- //     }
- //   }
+    stage('sonar-scanner') {
+      def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+      withCredentials([string(credentialsId: 'sonar', variable: 'sonarLogin')]) {
+        sh "${sonarqubeScannerHome}/bin/sonar-scanner -e -Dsonar.host.url=http://${SONARQUBE_HOSTNAME}:9000 -Dsonar.login=${sonarLogin} -Dsonar.projectName=WebApp -Dsonar.projectVersion=${env.BUILD_NUMBER} -Dsonar.projectKey=GS -Dsonar.sources=src/main/ -Dsonar.tests=src/test/ -Dsonar.java.binaries=build/**/* -Dsonar.language=java"
+      }
+    }
 
-//}
+}
 //END-OF-SCRIPT
