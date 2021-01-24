@@ -13,7 +13,7 @@ node {
 
 
   stage('SonarQube analysis') {
-  ##  def scannerHome = tool 'SonarScanner 4.0';
+  //  def scannerHome = tool 'SonarScanner 4.0';
     withSonarQubeEnv('sonarqube', envOnly:true) { // If you have configured more than one global server connection, you can specify its name
       println${env.SONAR_HOST_URL}
       println${env.SONAR_HOST_URL}
