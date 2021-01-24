@@ -1,15 +1,24 @@
 //START-OF-SCRIPT
 node {
-    def SONARQUBE_HOSTNAME = '34.214.185.4'
-    def RELEASENAME = "webapp-1.0.war"
+ //   def SONARQUBE_HOSTNAME = '34.214.185.4'
+  //  def RELEASENAME = "webapp-1.0.war"
 
 //    def GRADLE_HOME = tool name: 'gradle-4.10.2', type: 'hudson.plugins.gradle.GradleInstallation'
-    def GRADLE_HOME = "/opt/gradle/gradle-4.10.2"
+  //  def GRADLE_HOME = "/opt/gradle/gradle-4.10.2"
 //    sh "${GRADLE_HOME}/bin/gradle tasks"
 
     stage('Clone') {
          git url 'https://github.com/HugoAquinoNavarrete/devops-webapp3.git'
     }
+
+
+  stage('SonarQube analysis') {
+  ##  def scannerHome = tool 'SonarScanner 4.0';
+    withSonarQubeEnv('sonarqube', envOnly:true) { // If you have configured more than one global server connection, you can specify its name
+      println${env.SONAR_HOST_URL}
+      println${env.SONAR_HOST_URL}
+    }
+  }
 
 //  stage('SonarQube analysis') {
   //  withSonarQubeEnv() { // Will pick the global server connection you have configured
@@ -26,18 +35,18 @@ node {
 //END-OF-SCRIPT
 
 //pipeline {
-//  environment {
-//     def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+  //environment {
+    // def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
 //  }
 
-//  agent any
+ // agent any
 
- // stages {
-   // stage('Clone') {
-//      steps {
-  //      git(url: 'https://github.com/HugoAquinoNavarrete/devops-webapp3', branch: 'main')
-    //  }
-//    }
+  //stages {
+ //   stage('Clone') {
+   //   steps {
+     //   git(url: 'https://github.com/HugoAquinoNavarrete/devops-webapp3', branch: 'main')
+  //    }
+   // }
 
   //  stage('Build') {
     //  steps {
