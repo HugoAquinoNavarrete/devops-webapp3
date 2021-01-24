@@ -12,7 +12,8 @@ node {
     }
 
     stage('build') {
-        sh "${GRADLE_HOME}/bin/gradle build -PwarName=${RELEASENAME} --info"
+//        sh "${GRADLE_HOME}/bin/gradle build -PwarName=${RELEASENAME} --info"
+          sh "${GRADLE_HOME}/bin/gradle build"
     }
 
 }
