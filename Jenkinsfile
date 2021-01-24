@@ -2,7 +2,8 @@
 node {
     def SONARQUBE_HOSTNAME = '54.202.173.92'
 
-    def GRADLE_HOME = tool name: 'gradle-4.10.2', type: 'hudson.plugins.gradle.GradleInstallation'
+//    def GRADLE_HOME = tool name: 'gradle-4.10.2', type: 'hudson.plugins.gradle.GradleInstallation'
+    def GRADLE_HOME = "/opt/gradle/gradle-4.10.2"
     sh "${GRADLE_HOME}/bin/gradle tasks"
 
     stage('Clone') {
