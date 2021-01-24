@@ -5,8 +5,8 @@ node {
     def GRADLE_HOME = tool name: 'gradle-4.10.2', type: 'hudson.plugins.gradle.GradleInstallation'
     sh "${GRADLE_HOME}/bin/gradle tasks"
 
-    stage('prep') {
-        git url: 'https://github.com/HugoAquinoNavarrete/devops-webapp3'                
+    stage('Clone') {
+        git url: 'https://github.com/HugoAquinoNavarrete/devops-webapp3.git'                
     }
 
     stage('build') {
