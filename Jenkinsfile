@@ -7,7 +7,7 @@ node {
     sh "${GRADLE_HOME}/bin/gradle tasks"
 
     stage('Clone') {
-          sh "echo $SONARQUBE_HOSTNAME"
+          sh "pwd"
    //     git url: 'https://github.com/HugoAquinoNavarrete/devops-webapp3.git')
     }
 
